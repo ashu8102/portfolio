@@ -1,6 +1,7 @@
 .section--footer {
-    background: transparent;
-    border-radius: 0;
+    background: linear-gradient(180deg, rgba(3,22,44,0.92), rgba(6,28,63,0.96));
+    border-radius: 1rem;
+    padding: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
