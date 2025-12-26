@@ -1,0 +1,125 @@
+<template>
+    <section class="section">
+        <div class="section__header">
+            <p class="section__kicker">Capabilities</p>
+            <h2 class="section__title">Skills &amp; Tech Stack</h2>
+            <p class="section__subtitle">
+                I combine strong Salesforce platform fundamentals with modern engineering practices to deliver resilient
+                solutions.
+            </p>
+        </div>
+
+        <div class="slds-grid slds-wrap slds-gutters">
+            <template for:each={skillGroups} for:item="group">
+                <div key={group.title}
+                    class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2 slds-large-size_1-of-3 slds-m-top_medium">
+                    <article class="skill-card slds-p-around_x-small">
+                        <div class="slds-grid slds-grid_vertical-align-center slds-m-bottom_small">
+                            <lightning-icon icon-name={group.icon} size="small"></lightning-icon>
+                            <h3 class="slds-text-heading_small slds-m-left_small">{group.title}</h3>
+                        </div>
+                        <ul class="skill-card__list">
+                            <template for:each={group.items} for:item="item">
+                                <li key={item} class="skill-card__item">{item}</li>
+                            </template>
+                        </ul>
+                    </article>
+                </div>
+            </template>
+        </div>
+
+        <!-- Certifications (redesigned) -->
+        <div class="section__subheader slds-m-top_x-large">
+            <h3 class="section__subtitle-heading">Certifications</h3>
+            <p class="section__subtitle-small slds-m-top_x-small">
+                Selected platform & developer certifications. Tap a badge for details.
+            </p>
+        </div>
+
+        <div class="certifications-wrapper slds-m-top_medium">
+            <div class="cert-grid" role="list" aria-label="Certifications grid">
+                <template for:each={certificationsWithIndex} for:item="cert">
+                    <article key={cert.name} role="listitem" class="cert-card" tabindex="0" style={cert.styleVar}
+                        data-cert-id={cert.certId} title={cert.name}>
+                        <div class="cert-card__media">
+                            <template if:true={cert.badgeUrl}>
+                                <img src={cert.badgeUrl} alt={cert.name} class="cert-badge-img" />
+                            </template>
+                            <template if:false={cert.badgeUrl}>
+                                <span class="cert-avatar">
+                                    {cert.initials}
+                                </span>
+                            </template>
+                        </div>
+
+                        <div class="cert-card__body">
+                            <div class="cert-card__top">
+                                <span class="cert-badge-type">{cert.type}</span>
+                                <!-- <span class="cert-id" aria-hidden="true">{cert.certId}</span> -->
+                            </div>
+                            <div class="cert-card__title">{cert.name}</div>
+                            <div class="cert-card__actions">
+                                <button class="slds-button slds-button_neutral slds-button_x-small" data-index={cert.idx}
+                                    onclick={handleDotClick}>View</button>
+                            </div>
+                        </div>
+                    </article>
+                </template>
+            </div>
+
+            <!-- Mobile horizontal rail -->
+            <div class="cert-rail" role="region" aria-label="Certifications rail">
+                <div class="cert-rail__inner" role="list" aria-label="Certification items">
+                    <template for:each={certificationsWithIndex} for:item="cert">
+                        <article key={cert.certId} class={cert.itemClass} title={cert.name} role="listitem"
+                            aria-selected={cert.ariaSelected} tabindex="0" data-index={cert.idx}
+                            onclick={handleRailItemClick}>
+                            <div class="cert-rail__media">
+                                <template if:true={cert.badgeUrl}>
+                                    <img src={cert.badgeUrl} alt={cert.name} class="cert-badge-img" />
+                                </template>
+                                <template if:false={cert.badgeUrl}>
+                                    <span class="cert-avatar">{cert.initials}</span>
+                                </template>
+                            </div>
+                            <!-- <div class="cert-rail__label">{cert.type}</div> -->
+                        </article>
+                    </template>
+                </div>
+
+                <!-- Dot navigation -->
+                <div class="cert-dots" role="tablist" aria-label="Certification navigation">
+                    <template for:each={certificationsWithIndex} for:item="cert">
+                        <button
+                            key={cert.certId}
+                            class={cert.dotClass}
+                            data-index={cert.idx}
+                            onclick={handleDotClick}
+                            role="tab"
+                            aria-selected={cert.ariaSelected}
+                            aria-label={cert.name}
+                            title={cert.name}
+                        ></button>
+                    </template>
+                </div>
+            </div>
+
+            <div class="cert-details slds-m-top_medium" aria-live="polite">
+                <div class="cert-details__card cert-details__card--centered">
+                    <div class="cert-details__body">
+                        <div class="cert-details__title">{activeCert.name}</div>
+                        <div class="cert-details__meta">
+                            <span class="cert-details__meta-item"><strong>ID:</strong> {activeCert.certId}</span>
+                            <span class="cert-details__meta-item"><strong>Completed:</strong> {activeCert.completionDate}</span>
+                            <span class="cert-details__meta-item"><strong>Issuer:</strong> {activeCert.issuer}</span>
+                        </div>
+                        <div class="cert-details__desc">{activeCert.shortDescription}</div>
+                        <div class="cert-details__links">
+                            <!-- <a href={activeCert.verifyUrl} target="_blank" if:true={activeCert.verifyUrl} class="slds-button slds-button_neutral slds-button_x-small">Verify</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

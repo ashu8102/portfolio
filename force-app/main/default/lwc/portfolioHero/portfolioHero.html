@@ -1,0 +1,139 @@
+<template>
+    <section class="hero slds-m-top_x-large">
+        <div class="slds-grid slds-wrap slds-grid_vertical-align-center slds-gutters_large hero__grid">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 hero__visual-col">
+                <div class="hero__visual slds-p-around_medium">
+                    <div class="hero__avatar-wrapper">
+                        <span class="slds-avatar slds-avatar_circle slds-avatar_x-large hero__avatar">
+                            <img src={avatarUrl} alt="Ashish Kurzekar's Img" title="Ashish Kurzekar" />
+                        </span>
+                        <div class="hero__status-pill">
+                            <span class="hero__status-dot"></span>
+                            <span>Open to opportunities</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 hero__content">
+                <div class="slds-p-around_medium">
+                    <h1 class="hero__title slds-text-heading_large slds-m-top_small">
+                        Ashish Kurzekar,
+                        <span class="hero__title-highlight">Salesforce Solutions Engineer</span>
+                    </h1>
+                    <p class="hero__subtitle slds-m-top_small">
+                        I design and ship scalable Salesforce solutions across Sales Cloud, Experience Cloud, and
+                        integrations. Clean architecture, measurable impact, and a great user experience are my
+                        priorities.
+                    </p>
+
+                    <div class="hero__cta slds-m-top_medium">
+                        <button class="slds-button slds-button_brand hero__button" onclick={openModal}>
+                            <lightning-icon icon-name="utility:download" size="x-small" class="hero__button-icon"></lightning-icon>
+                            <span class="slds-m-left_x-small">Download Resume</span>
+                        </button>
+                        <template if:true={showModal}>
+                            <section role="dialog" class="slds-modal slds-fade-in-open">
+                                <div class="slds-modal__container">
+                                    <button class="slds-button slds-button_icon slds-modal__close" title="Close" onclick={closeModal}>
+                                        <lightning-icon
+                                            icon-name="utility:close"
+                                            alternative-text="Close"
+                                            size="small">
+                                        </lightning-icon>
+                                        <span class="slds-assistive-text">Close</span>
+                                    </button>
+                                    <header class="slds-modal__header">
+                                        <h2 class="slds-text-heading_medium">Quick email verification required to download the resume</h2>
+                                    </header>
+                                    <div class="slds-modal__content slds-p-around_medium">
+                                        <template if:true={stepEmail}>
+                                            <lightning-input type="email" label="Enter your email" value={email}
+                                                onchange={handleEmail}></lightning-input>
+                                            <lightning-button variant="brand" label="Send OTP" onclick={sendOtp}>
+                                            </lightning-button>
+                                        </template>
+
+                                        <template if:true={stepOtp}>
+                                            <lightning-input type="text" label="Enter OTP" value={otpInput}
+                                                onchange={handleOtp}></lightning-input>
+                                            <lightning-button variant="brand" label="Verify & Download"
+                                                onclick={verifyOtp}></lightning-button>
+                                        </template>
+
+                                        <template if:true={error}>
+                                            <p class="slds-text-color_error">{error}</p>
+                                        </template>
+                                    </div>
+                                </div>
+                            </section>
+                            <div class="slds-backdrop slds-backdrop_open"></div>
+                        </template>
+
+
+                        <!-- <a class="slds-button slds-button_brand hero__button"
+                            href="/sfc/servlet.shepherd/document/download/RESUME_PLACEHOLDER" target="_blank">
+                            <lightning-icon icon-name="utility:download" size="x-small" class="hero__button-icon">
+                            </lightning-icon>
+                            <span class="slds-m-left_x-small">Download Resume</span>
+                        </a> -->
+                        <a class="slds-button slds-button_neutral hero__button slds-m-left_small"
+                            href="mailto:ashishkurzekar.ak@gmail.com?subject=Salesforce%20Project%20Inquiry">
+                            <lightning-icon icon-name="utility:email" size="x-small" class="hero__button-icon">
+                            </lightning-icon>
+                            <span class="slds-m-left_x-small">Contact Me</span>
+                        </a>
+                    </div>
+
+                    <div class="hero__meta slds-m-top_large slds-grid slds-wrap slds-gutters_small">
+                        <div class="slds-col slds-size_1-of-2 hero__metric">
+                            <p class="hero__metric-label">Experience</p>
+                            <p class="hero__metric-value">4+ years</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-2 hero__metric">
+                            <p class="hero__metric-label">Domain</p>
+                            <p class="hero__metric-value">Salesforce</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_1-of-1 hero__visual-col">
+                <div class="hero__visual slds-p-around_medium">
+                    <div class="hero__chips slds-m-top_large">
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:apex" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Apex · Async</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:chat" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Agnetforce</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:component_customization" size="x-small" variant='inverse'></lightning-icon>
+                            <span>LWC · Experience Cloud</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:integration" size="x-small" variant='inverse'></lightning-icon>
+                            <span>REST API</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:market" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Commerce Cloud</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:campaign" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Hubspot CRM</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:success" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Copado</span>
+                        </div>
+                        <div class="hero__chip">
+                            <lightning-icon icon-name="utility:announcement" size="x-small" variant='inverse'></lightning-icon>
+                            <span>Pardot Account Engagement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

@@ -1,0 +1,65 @@
+<template>
+    <section class="simple-case-card">
+        <div class="simple-case-card__header slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+            <div>
+                <p class="kicker">Need help?</p>
+                <h3 class="title">Quick case</h3>
+            </div>
+            <div class="badge" aria-hidden="true">
+                <span class="badge-dot"></span>
+                <span class="badge-text">Quick response</span>
+            </div>
+        </div>
+
+        <div class="simple-case-card__body slds-p-around_small">
+            <form class="simple-case-form" onsubmit={handleSubmit} novalidate>
+                <div class="slds-grid slds-wrap slds-gutters_small">
+                    <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <label class="slds-form-element__label" for="name">Full name</label>
+                        <input id="name" class="slds-input" type="text" name="name" value={name} onchange={handleChange} placeholder="Your full name" required />
+                    </div>
+
+                     <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-2">
+                        <label class="slds-form-element__label" for="email">Email</label>
+                        <input id="email" class="slds-input" type="email" name="email" value={email} onchange={handleChange} placeholder="you@company.com" required />
+                    </div>
+
+                    <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                        <label class="slds-form-element__label" for="description">Note</label>
+                        <textarea id="description" class="slds-textarea" name="description" value={description} onchange={handleChange} rows="3" placeholder="Describe your request..." required></textarea>
+                    </div>
+                </div>
+
+                <div class="actions slds-m-top_medium slds-grid slds-grid_align-spread slds-grid_vertical-align-center">
+                    <!-- <div class="actions-left">
+                        <button class="slds-button slds-button_neutral" type="button" onclick={resetForm} disabled={isSaving}>Reset</button>
+                    </div> -->
+
+                    <div class="actions-right slds-grid slds-grid_vertical-align-center slds-gap_small">
+                        <lightning-spinner if:true={isSaving} size="small" alternative-text="Saving">
+                        </lightning-spinner>
+                        <button class="slds-button slds-button_brand" type="submit" disabled={isSaving}>
+                            Submit
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <!-- CUSTOM POPUP MESSAGE -->
+            <template if:true={popupVisible}>
+                <div class="popup-container {popupVariant}">
+                    <div class="popup-content">
+                        <p>{popupMessage}</p>
+                    </div>
+                </div>
+            </template>
+
+            <template if:true={createdCaseNumber}>
+                <div class="success slds-m-top_medium">
+                    <p class="success__title">Thanks {custname} — your case was created</p>
+                    <p class="slds-text-body_small slds-text-color_inverse">Reference: <strong>{createdCaseNumber}</strong></p>
+                    <p class="slds-text-body_small slds-m-top_x-small slds-text-color_inverse">We'll review and get back to you shortly.</p>
+                </div>
+            </template>
+        </div>
+    </section>
+</template>

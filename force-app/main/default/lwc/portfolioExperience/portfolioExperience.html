@@ -1,0 +1,41 @@
+<template>
+    <section class="section">
+        <div class="section__header">
+            <p class="section__kicker">Professional Journey</p>
+            <h2 class="section__title">Experience</h2>
+            <p class="section__subtitle">
+                Selected roles that highlight my experience delivering end-to-end Salesforce implementations.
+            </p>
+        </div>
+
+        <ol class="timeline slds-m-top_large">
+            <template for:each={roles} for:item="role">
+                <li key={role.id} class="timeline__item slds-grid slds-wrap slds-gutters_small slds-m-top_medium">
+                    <div class="slds-col slds-size_1-of-12 timeline__bullet-col">
+                        <div class="timeline__bullet"></div>
+                        <div class="timeline__line"></div>
+                    </div>
+                    <div class="slds-col slds-size_12-of-12">
+                        <article class="timeline__card slds-p-around_medium">
+                            <div class="slds-grid slds-wrap slds-grid_align-spread slds-grid_vertical-align-center">
+                                <div>
+                                    <h3 class="custom_title slds-text-heading_small">{role.title}</h3>
+                                    <p class="timeline__company">{role.company}</p>
+                                </div>
+                                <p class="timeline__dates">{role.years}</p>
+                            </div>
+                            <ul class="timeline__contributions slds-m-top_small">
+                                <template for:each={role.contributions} for:item="item">
+                                    <li key={item}>
+                                        <span class="timeline__bullet-point">•</span>
+                                        <span>{item}</span>
+                                    </li>
+                                </template>
+                            </ul>
+                        </article>
+                    </div>
+                </li>
+            </template>
+        </ol>
+    </section>
+</template>

@@ -1,0 +1,161 @@
+<template>
+    <div class="portfolio slds-scope">
+        <!-- Decorative background orbits -->
+        <div class="portfolio__orb portfolio__orb--one"></div>
+        <div class="portfolio__orb portfolio__orb--two"></div>
+
+        <!-- OPEN TO WORK MODAL -->
+        <template if:true={showOpenToWorkModal}>
+            <section class="portfolio-modal" role="dialog" aria-modal="true" aria-label="Open to work">
+                <div class="portfolio-modal__backdrop"></div>
+
+                <div class="portfolio-modal__content">
+                    <!-- Top SF icon / visual -->
+                    <div class="portfolio-modal__icon">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Salesforce.com_logo.svg/1280px-Salesforce.com_logo.svg.png"
+                             alt="Salesforce Logo" class="sf-logo-img"/>
+                              <img src={hbLogo} alt="Hubspot Logo" class="hb-logo-img"/>
+                    </div>
+
+                    <!-- Badge -->
+                    <div class="portfolio-modal__badge">
+                        <span class="portfolio-modal__dot"></span>
+                        <span>Open to work</span>
+                    </div>
+
+                    <!-- Text -->
+                    <h2 class="portfolio-modal__title slds-m-top_small">
+                        Hi, I'm <span class="portfolio-modal__highlight">Ashish Kurzekar</span>
+                    </h2>
+                    <p class="portfolio-modal__subtitle slds-m-top_x-small">
+                        Salesforce Developer focused on LWC, Apex, and high-impact integrations.
+                        Currently open to new full-time and contract opportunities.
+                    </p>
+
+                    <!-- CTA buttons -->
+                    <div class="portfolio-modal__cta slds-m-top_medium">
+                        <button class="slds-button slds-button_brand" onclick={handleViewPortfolio}>
+                            <lightning-icon
+                                icon-name="utility:preview"
+                                size="x-small"
+                                class="slds-m-right_x-small"
+                            ></lightning-icon>
+                            <span>View Profile</span>
+                        </button>
+
+                        <a class="slds-button slds-button_neutral portfolio-modal__cta-secondary"
+                            href="mailto:ashishkurzekar.ak@gmail.com?subject=Salesforce%20Opportunity">
+                            <lightning-icon icon-name="utility:email" size="x-small" class="slds-m-right_x-small">
+                            </lightning-icon>
+                            <span>Contact Me</span>
+                        </a>
+                    </div>
+
+                    <p class="portfolio-modal__hint slds-m-top_medium">
+                        👋 Recruiters & hiring managers: scroll down for projects, integrations,
+                        and measurable impact (MQL lift, WMS sync, and more).
+                    </p>
+                </div>
+            </section>
+        </template>
+
+
+        <!-- TOP NAVIGATION -->
+        <header class="portfolio__header">
+            <div
+                class="portfolio__header-inner slds-grid slds-grid_vertical-align-center slds-p-horizontal_large slds-p-vertical_small">
+                <!-- Brand (left) -->
+                <div class="portfolio__brand slds-grid slds-grid_vertical-align-center">
+                    <div class="portfolio__brand-mark">
+                        <span class="portfolio__brand-initials">AK</span>
+                    </div>
+                    <div class="portfolio__brand-text slds-m-left_small">
+                        <p class="portfolio__brand-title">Salesforce Developer</p>
+                        <p class="portfolio__brand-subtitle">LWC · Apex · Integrations</p>
+                    </div>
+                </div>
+
+                <!-- Right side: nav + status + mobile button -->
+                <div class="portfolio__header-right slds-grid slds-grid_vertical-align-center">
+                    <!-- Desktop nav -->
+                    <nav class="portfolio__nav slds-grid slds-grid_vertical-align-center slds-show_medium">
+                        <template for:each={navItemsWithClass} for:item="item">
+                            <button
+                        key={item.id}
+                        data-section={item.id}
+                        class={item.className}
+                        onclick={handleNavClick}
+                    >
+                        {item.label}
+                    </button>
+                        </template>
+                    </nav>
+
+                    <!-- Right-side pill (desktop only) -->
+                    <div class="portfolio__status slds-grid slds-grid_vertical-align-center slds-show_medium">
+                        <span class="portfolio__status-dot"></span>
+                        <span class="portfolio__status-text">Open to work</span>
+                    </div>
+
+                    <!-- Mobile menu button -->
+                    <button
+                class="slds-button slds-button_icon slds-button_icon-border-filled portfolio__menu-toggle slds-hide_medium"
+                onclick={toggleMobileNav}
+                aria-label="Toggle navigation"
+            >
+                <lightning-icon icon-name="utility:rows" size="x-small"></lightning-icon>
+            </button>
+                </div>
+            </div>
+        </header>
+        <!-- Mobile Nav -->
+        <nav if:true={showMobileNav}
+            class="portfolio__nav-mobile slds-hide_medium slds-p-horizontal_large slds-p-bottom_small slds-m-top_x-large">
+            <template for:each={navItemsWithClass} for:item="item">
+                <button
+                    key={item.id}
+                    data-section={item.id}
+                    class={item.classNameMobile}
+                    onclick={handleNavClick}
+                >
+                    {item.label}
+                </button>
+            </template>
+        </nav>
+
+        <!-- MAIN CONTENT -->
+        <main class="portfolio__main slds-p-around_large">
+            <section data-id="hero" class="portfolio__section">
+                <c-portfolio-hero></c-portfolio-hero>
+            </section>
+
+            <section data-id="skills" class="portfolio__section">
+                <c-portfolio-skills></c-portfolio-skills>
+            </section>
+
+            <section data-id="experience" class="portfolio__section">
+                <c-portfolio-experience></c-portfolio-experience>
+            </section>
+
+            <section data-id="projects" class="portfolio__section">
+                <c-portfolio-projects></c-portfolio-projects>
+            </section>
+
+            <section data-id="demos" class="portfolio__section">
+                <c-portfolio-demos></c-portfolio-demos>
+            </section>
+
+            <section data-id="testimonials" class="portfolio__section">
+                <c-portfolio-testimonials></c-portfolio-testimonials>
+            </section>
+
+            <section data-id="support" class="portfolio__section">
+                <c-portfolio-simple-case></c-portfolio-simple-case>
+            </section>
+
+            <section data-id="contact" class="portfolio__section">
+                <c-portfolio-contact></c-portfolio-contact>
+            </section>
+        </main>
+    </div>
+</template>

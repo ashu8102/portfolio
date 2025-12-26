@@ -1,0 +1,30 @@
+.section--footer {
+    background: transparent;
+    border-radius: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contact-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem;
+}
+
+.contact-links__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.45rem 0.75rem;
+    border-radius: 999px;
+    background: rgba(6, 28, 63, 0.9);
+    border: 1px solid rgba(164, 242, 255, 0.4);
+    text-decoration: none;
+    color: #f5f7fb;
+    font-size: 0.8rem;
+}
+
+.section__footer-meta {
+    margin-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 1rem;
+}

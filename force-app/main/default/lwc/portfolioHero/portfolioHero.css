@@ -1,0 +1,185 @@
+.hero {
+    position: relative;
+    min-height: 60vh;
+    border-radius: 1.5rem;
+    background: radial-gradient(circle at top left, #1e4b7f 0, rgba(6, 28, 63, 0.2) 40%),
+        radial-gradient(circle at bottom right, #00b1ff 0, rgba(6, 28, 63, 0.05) 40%);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+    padding-top: 5%;
+}
+
+/* internal grid wrapper so sf icon is not part of slds-grid */
+.hero__grid {
+    position: relative;
+    z-index: 1;
+}
+
+.hero__content {
+    color: #f5f7fb;
+}
+
+.hero__kicker {
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.hero__title {
+    font-weight: 800;
+    color: #fff;
+}
+
+.hero__title-highlight {
+    display: block;
+    color: #81e6f8;
+    font-weight: 600;
+}
+
+.hero__subtitle {
+    color: rgba(244, 247, 252, 0.8);
+    max-width: 32rem;
+}
+
+.hero__cta .slds-button {
+    border-radius: 999px;
+}
+
+.hero__button-icon {
+    vertical-align: middle;
+}
+
+.hero__metric-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.12em;
+}
+
+.hero__metric-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.hero__visual-col {
+    position: relative;
+}
+
+.hero__visual {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__avatar-wrapper {
+    position: relative;
+}
+
+.hero__avatar {
+    width: 120px;
+    height: 120px;
+    font-size: 2.2rem;
+    background: linear-gradient(135deg, #00b1ff, #a4f2ff);
+    color: #020b1f;
+}
+
+.hero__status-pill {
+    position: absolute;
+    bottom: -1.5rem;
+    left: 70%;
+    transform: translateX(-50%);
+    background-color: rgba(2, 11, 31, 0.92);
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+    font-size: 0.75rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.hero__status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background-color: #2ecc71;
+}
+
+ .hero__chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+} 
+
+
+.hero__chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    font-weight: bold;
+    background: linear-gradient(135deg, #101010 0%, #4841c0 100%);
+} 
+
+
+.hero__avatar.slds-avatar {
+    width: 200px;
+    height: 200px;
+}
+
+.hero__avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+/* ===== MOBILE / TABLET RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .hero {
+        margin-top: 1rem;
+        border-radius: 1.2rem;
+    }
+
+    .hero__content {
+        text-align: center;
+    }
+
+    .hero__subtitle {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero__cta {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .hero__cta .slds-button+.slds-button {
+        margin-left: 0 !important;
+        /* override slds-m-left_small */
+    }
+
+    .hero__meta {
+        text-align: center;
+    }
+}
+
+@media (min-width: 769px) {
+    .hero__content {
+        text-align: left;
+    }
+
+    .hero__chips {
+        justify-content: flex-start;
+    }
+}

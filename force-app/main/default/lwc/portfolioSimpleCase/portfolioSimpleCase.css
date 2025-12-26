@@ -1,0 +1,106 @@
+.simple-case-card {
+    border-radius: 1rem;
+    background: linear-gradient(180deg, rgba(3,22,44,0.92), rgba(6,28,63,0.96));
+    border: 1px solid rgba(164,242,255,0.06);
+    padding: 1rem;
+    color: #e6eef8;
+    box-shadow: 0 16px 40px rgba(2,6,23,0.6);
+}
+
+.simple-case-card__header .kicker {
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: rgba(164,242,255,0.9);
+    margin: 0;
+}
+
+.simple-case-card__header .title {
+    margin: 0.15rem 0 0 0;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+.simple-case-form label {
+    display:block;
+    margin-bottom:0.35rem;
+    color: rgba(226,232,240,0.92);
+    font-size:0.8rem;
+}
+
+.slds-input, .slds-textarea {
+    background: rgba(255,255,255,0.03);
+    color: #e6eef8;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.04);
+}
+
+.actions .slds-button_brand {
+    min-width: 90px;
+}
+
+.success {
+    margin-top: 0.75rem;
+    padding: 0.6rem;
+    border-radius: 0.6rem;
+    background: rgba(0,177,255,0.06);
+    border: 1px solid rgba(0,177,255,0.06);
+}
+
+.success__title {
+    margin: 0;
+    font-weight:600;
+}
+
+/* mobile tweaks */
+@media (max-width: 520px) {
+    .simple-case-card { padding: 0.8rem; border-radius: 0.9rem; }
+    .actions { flex-direction: column; gap: 0.5rem; align-items: stretch; }
+}
+
+/* ============================
+    CUSTOM POPUP STYLING
+   ============================ */
+
+.popup-container {
+    position: fixed;
+    bottom: 6rem;
+    right: 10rem;
+    background: rgba(243, 227, 46, 0.9);
+    border-left: 10px solid #00b1ff;
+    padding: 1rem 1.3rem;
+    border-radius: 0.75rem;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+    animation: popupFadeIn 0.35s ease forwards;
+    z-index: 9999;
+}
+
+.popup-container.success {
+    border-left-color: #00e676;
+}
+
+.popup-container.error {
+    border-left-color: #ef5350;
+}
+
+.popup-container.warning {
+    border-left-color: #ffa726;
+}
+
+.popup-content {
+    color: #000000;
+    font-size: 0.9rem;
+    letter-spacing: 0.3px;
+	font-weight: bold;
+}
+
+/* popup animation */
+@keyframes popupFadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.97);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}

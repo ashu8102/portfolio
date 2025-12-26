@@ -1,0 +1,50 @@
+.testimonial-carousel {
+    position: relative;
+}
+
+.testimonial-card {
+    background: radial-gradient(circle at top left, rgba(0, 177, 255, 0.2), rgba(6, 28, 63, 0.95));
+    border-radius: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.testimonial-card__quote {
+    font-size: 1rem;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.92);
+}
+
+.testimonial-card__author {
+    margin-top: 0.75rem;
+    font-weight: 600;
+}
+
+.testimonial-card__role {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonial-card__image-placeholder {
+    border-radius: 1rem;
+    border: 1px dashed rgba(164, 242, 255, 0.6);
+    min-height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.testimonial-carousel__controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+}
+
+.testimonial-carousel__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background-color: #a4f2ff;
+}

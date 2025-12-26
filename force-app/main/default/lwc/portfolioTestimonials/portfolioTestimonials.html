@@ -1,0 +1,42 @@
+<template>
+    <section class="section">
+        <div class="section__header">
+            <p class="section__kicker">What people say</p>
+            <h2 class="section__title">Testimonials</h2>
+            <p class="section__subtitle">
+                Selected recommendations from managers and stakeholders. Screenshots from LinkedIn can be embedded here.
+            </p>
+        </div>
+
+        <div class="testimonial-carousel slds-m-top_medium">
+            <template if:true={currentTestimonial}>
+                <article class="testimonial-card slds-p-around_large">
+                    <div class="slds-grid slds-wrap slds-gutters_small slds-grid_vertical-align-center">
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_3-of-4">
+                            <p class="testimonial-card__quote">“{currentTestimonial.quote}”</p>
+                            <p class="testimonial-card__author">{currentTestimonial.name}</p>
+                            <p class="testimonial-card__role">{currentTestimonial.role}</p>
+                        </div>
+                        <div class="slds-col slds-size_1-of-1 slds-medium-size_1-of-4">
+                            <div class="testimonial-card__image-placeholder">
+                                <span>LinkedIn screenshot placeholder</span>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </template>
+
+            <div class="testimonial-carousel__controls slds-m-top_small">
+                <button class="slds-button slds-button_icon" onclick={handlePrev} title="Previous testimonial">
+                    <lightning-icon icon-name="utility:chevronleft" size="x-small"></lightning-icon>
+                </button>
+                <span class="testimonial-carousel__dot" if:true={isFirstActive}></span>
+                <span class="testimonial-carousel__dot" if:true={isSecondActive}></span>
+                <span class="testimonial-carousel__dot" if:true={isThirdActive}></span>
+                <button class="slds-button slds-button_icon" onclick={handleNext} title="Next testimonial">
+                    <lightning-icon icon-name="utility:chevronright" size="x-small"></lightning-icon>
+                </button>
+            </div>
+        </div>
+    </section>
+</template>

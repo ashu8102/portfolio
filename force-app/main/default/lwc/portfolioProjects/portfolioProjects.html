@@ -1,0 +1,58 @@
+<template>
+    <section class="section">
+        <div class="section__header">
+            <p class="section__kicker">Case Studies</p>
+            <h2 class="section__title">Featured Projects</h2>
+            <p class="section__subtitle">
+                A sample of projects that highlight my approach to architecture, usability, and measurable outcomes.
+            </p>
+        </div>
+
+        <div class="slds-grid slds-wrap slds-gutters slds-m-top_medium">
+            <template for:each={projects} for:item="project">
+                <div key={project.id} class="slds-col slds-size_1-of-1 slds-large-size_1-of-2 slds-m-top_medium">
+                    <article class="project-card slds-p-around_medium">
+                        <div class="project-card__header slds-grid slds-grid_vertical-align-start slds-grid_align-spread">
+                            <div>
+                                <h3 class="custom_title slds-text-heading_small">{project.title}</h3>
+                                <p class="project-card__subtitle">{project.subtitle}</p>
+                            </div>
+                            <span class="project-card__pill">{project.type}</span>
+                        </div>
+
+                        <div class="project-card__media slds-m-vertical_small">
+                            <div class="project-card__image-placeholder">
+                                <span class="project-card__image-text">Screenshot / Diagram Placeholder</span>
+                            </div>
+                        </div>
+
+                        <p class="project-card__description">{project.description}</p>
+
+                        <p class="project-card__label slds-m-top_small">Tech Stack</p>
+                        <ul class="project-card__tags">
+                            <template for:each={project.tech} for:item="tag">
+                                <li key={tag} class="project-card__tag">{tag}</li>
+                            </template>
+                        </ul>
+
+                        <div class="slds-grid slds-gutters_small slds-m-top_small">
+                            <div class="slds-col slds-size_1-of-2">
+                                <p class="project-card__label">Challenges &amp; Solution</p>
+                                <p class="project-card__detail">{project.challenges}</p>
+                            </div>
+                            <div class="slds-col slds-size_1-of-2">
+                                <p class="project-card__label">Outcome</p>
+                                <p class="project-card__detail">{project.outcome}</p>
+                            </div>
+                        </div>
+
+                        <div class="project-card__snippet slds-m-top_small">
+                            <p class="project-card__label slds-m-bottom_x-small">Code snippet</p>
+                            <pre class="project-card__code"><code>{project.snippet}</code></pre>
+                        </div>
+                    </article>
+                </div>
+            </template>
+        </div>
+    </section>
+</template>
