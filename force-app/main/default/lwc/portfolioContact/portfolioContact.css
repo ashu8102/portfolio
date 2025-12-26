@@ -20,7 +20,7 @@
     background: rgba(6, 28, 63, 0.9);
     border: 1px solid rgba(164, 242, 255, 0.4);
     text-decoration: none;
-    color: #f5f7fb;
+    /* color: #f5f7fb; */
     font-size: 0.8rem;
 }
 
@@ -28,4 +28,29 @@
     margin-top: 1.5rem;
     border-top: 1px solid rgba(255, 255, 255, 0.08);
     padding-top: 1rem;
+}
+
+.contact-links__item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.brand-icon {
+    width: 20px;
+    height: 20px;
+    /* filter: brightness(0) invert(1);  */
+}
+
+.contact-links__item:hover .brand-icon {
+    filter: none;
+}
+.contact-links__item:hover {
+    background: #00bcd4;
+    color: #00303f;
+    border-color: #00bcd4;
 }
